@@ -1,0 +1,6 @@
+{
+  "template": "node",
+  "infiniteLoopProtection": false,
+  "hardReloadOnChange": false,
+  "view": "browser"
+}

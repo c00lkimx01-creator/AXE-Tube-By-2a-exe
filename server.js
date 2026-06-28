@@ -1,4 +1,4 @@
-// Minimal static server for Railway / any Node host.
+// Minimal static server for CodeSandbox (Node container)
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
@@ -31,7 +31,6 @@ const server = http.createServer((req, res) => {
       filePath = path.join(filePath, "index.html");
     }
     if (!fs.existsSync(filePath)) {
-      // SPA fallback
       filePath = path.join(ROOT, "index.html");
     }
     const ext = path.extname(filePath).toLowerCase();
