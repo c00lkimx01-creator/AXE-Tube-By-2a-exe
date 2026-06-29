@@ -12,6 +12,7 @@
     --text-dim:#606060;
     --text-faint:#909090;
     --border:#e5e5e5;
+    --search-border:rgba(96,96,96,.22);
     --sidebar-bg:#f9f9f9;
     --panel-bg:#ffffff;
     --hover:#f2f2f2;
@@ -28,26 +29,30 @@
     --radius:12px;
   }
   html[data-theme="dark"]{
-    --bg:#0f0f0f;
-    --bg-elev:#181818;
+    --bg:#1a1a1a;
+    --bg-elev:#1a1a1a;
     --text:#f1f1f1;
     --text-dim:#aaaaaa;
     --text-faint:#888888;
-    --border:#2c2c2c;
-    --sidebar-bg:#181818;
-    --panel-bg:#212121;
-    --hover:#373737;
-    --chip-bg:#272727;
+    --border:#2a2a2a;
+    --search-border:#2a2a2a;
+    --sidebar-bg:#1a1a1a;
+    --panel-bg:#1a1a1a;
+    --hover:#2a2a2a;
+    --chip-bg:#2a2a2a;
     --chip-text:#f1f1f1;
-    --chip-active-bg:#e2261f;
+    --chip-active-bg:#ff0033;
     --chip-active-text:#ffffff;
-    --accent:#e2261f;
+    --accent:#ff0033;
     --accent-text:#ffffff;
-    --input-bg:#121212;
+    --input-bg:#1a1a1a;
     --input-text:#f1f1f1;
     --overlay:rgba(0,0,0,.6);
     --shadow:0 1px 2px rgba(0,0,0,.4);
   }
+  html[data-theme="dark"] .search-form input{background:#1a1a1a;border-color:#2a2a2a;}
+  html[data-theme="dark"] .search-form button.search-submit{background:#222;border-color:#2a2a2a;color:var(--text);}
+  html[data-theme="dark"] .search-form button.search-submit:hover{background:#303030;}
   *{box-sizing:border-box;}
   body{margin:0;}
   body, input, button, select, textarea{
@@ -90,17 +95,18 @@
   html[data-theme="dark"] .brand .yt-logo-light{display:none;}
   html[data-theme="dark"] .brand .yt-logo-dark{display:block;}
   .search-wrap{flex:1 1 auto;display:flex;justify-content:center;}
-  .search-form{display:flex;align-items:center;width:100%;max-width:560px;}
+  .search-form{display:flex;align-items:center;width:100%;max-width:760px;}
   .search-form input{
     flex:1 1 auto; background:var(--chip-bg); color:var(--input-text);
-    border:1px solid var(--border); border-right:none;
-    border-radius:40px 0 0 40px; padding:9px 16px 9px 18px; font-size:14px; outline:none;
-    height:40px; box-sizing:border-box;
+    border:1px solid var(--search-border); border-right:none;
+    border-radius:40px 0 0 40px; padding:9px 18px 9px 20px; font-size:14px; outline:none;
+    height:42px; box-sizing:border-box;
   }
-  .search-form input:focus{border-color:#1c62b9;}
+  .search-form input:focus{border-color:var(--accent);}
   .search-form button.search-submit{
-    width:64px;height:40px; background:var(--chip-bg);
-    border:1px solid var(--border); border-radius:0 40px 40px 0;
+    width:48px;height:42px; background:var(--chip-bg);
+    border:1px solid var(--search-border); border-left:1px solid var(--border);
+    border-radius:0 40px 40px 0;
     cursor:pointer; display:flex;align-items:center;justify-content:center;
     color:var(--text);
   }
@@ -109,7 +115,7 @@
   /* ===== Side nav (mini rail ↔ expanded) ===== */
   .nav-rail{
     position:fixed; left:0; top:56px; bottom:0;
-    width:64px; background:var(--sidebar-bg);
+    width:70px; background:var(--sidebar-bg);
     z-index:90; padding:8px 0; overflow-y:auto;
     border-right:1px solid var(--border);
     transition:width .18s ease;
@@ -125,7 +131,7 @@
   .nav-rail button.active{background:var(--hover);}
   .nav-rail button.active svg{color:var(--accent);}
   .nav-rail svg{width:24px;height:24px;}
-  .nav-rail .label{font-size:11px;line-height:1.2;}
+  .nav-rail .label{font-size:13px;line-height:1.2;font-weight:600;}
 
   /* アクティブな項目のインジケーター線 */
   .nav-rail:not(.expanded) button.active::after {
@@ -154,7 +160,7 @@
     gap:22px; padding:10px 14px; text-align:left;
   }
   .nav-rail.expanded button.active{font-weight:700;}
-  .nav-rail.expanded .label{font-size:14px;}
+  .nav-rail.expanded .label{font-size:16px;font-weight:600;}
 
   /* Backdrop only used on mobile when expanded */
   .drawer-backdrop{
@@ -190,7 +196,7 @@
   /* ===== Main ===== */
   .main{
     padding-top:56px;
-    padding-left:64px;
+    padding-left:70px;
     min-height:100vh;
     display:flex;
     flex-direction:column;
@@ -207,8 +213,8 @@
   }
   .tab-chip{
     background:var(--chip-bg); color:var(--chip-text);
-    border:none; border-radius:4px; padding:9px 20px;
-    font-size:14px; font-weight:600; cursor:pointer;
+    border:none; border-radius:4px; padding:10px 22px;
+    font-size:17px; font-weight:700; cursor:pointer;
   }
   .tab-chip:hover{filter:brightness(0.95);}
   html[data-theme="dark"] .tab-chip:hover{filter:brightness(1.2);}
@@ -238,15 +244,15 @@
   @media (max-width:600px){.shorts-row .short-card{width:140px;}}
 
   .content{flex:1 1 auto; padding:24px 24px 0;}
-  .section-title{font-size:20px;font-weight:700;margin:0 0 16px 4px;}
+  .section-title{font-size:28px;font-weight:800;margin:0 0 16px 4px;}
 
   .grid{
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:32px 16px;
+    grid-template-columns:repeat(5, 1fr);
+    gap:28px 14px;
   }
-  @media (max-width:1400px){.grid{grid-template-columns:repeat(3, 1fr);}}
-  @media (max-width:1080px){.grid{grid-template-columns:repeat(3, 1fr);}}
+  @media (max-width:1600px){.grid{grid-template-columns:repeat(4, 1fr);}}
+  @media (max-width:1280px){.grid{grid-template-columns:repeat(3, 1fr);}}
   @media (max-width:820px){.grid{grid-template-columns:repeat(2, 1fr);}}
   @media (max-width:480px){.grid{grid-template-columns:1fr;}}
 
@@ -411,6 +417,22 @@
     overflow:hidden;position:relative;
   }
   .video-frame video{width:100%;height:100%;background:#000;display:block;}
+  .custom-controls{
+    position:absolute; left:0; right:0; bottom:0;
+    display:flex; align-items:center; gap:6px;
+    padding:8px 12px; background:linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,0));
+    color:#fff; z-index:5;
+    opacity:0; transition:opacity .2s ease; pointer-events:none;
+  }
+  .video-frame:hover .custom-controls,
+  .video-frame:focus-within .custom-controls{opacity:1; pointer-events:auto;}
+  .cc-btn{
+    background:transparent;border:none;color:#fff;cursor:pointer;
+    width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;
+    border-radius:50%;
+  }
+  .cc-btn:hover{background:rgba(255,255,255,.15);}
+  .cc-time{font-size:13px; font-weight:600; padding:0 8px;}
   .video-skeleton{
     position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#aaa;
   }
@@ -1172,7 +1194,7 @@
 
     <footer class="footer">
       <div class="f-brand">AXETube</div>
-      <div class="f-version">バージョン 1.1.0</div>
+      <div class="f-version">バージョン 1.3.0</div>
     </footer>
   </main>
 
@@ -1683,9 +1705,24 @@ function showMessage(text) {
 }
 function clearMessage() { stateMsgEl.style.display="none"; stateMsgEl.innerHTML=""; }
 
+function _maxAgeSecs(){
+  // Home (trending default) shows only videos within 1 week. Everywhere else: 2 years.
+  if (state.currentType === "default") return 7*24*3600;
+  return 2*365*24*3600;
+}
+function _withinAge(v){
+  if (!v) return false;
+  if (v.type === "channel" || (!v.videoId && v.authorId)) return true; // channel cards always pass
+  if (v.liveNow) return true;
+  const p = Number(v.published||0);
+  if (!p) return true; // unknown → keep
+  const ageSec = Math.floor(Date.now()/1000) - p;
+  return ageSec <= _maxAgeSecs();
+}
 function renderVideoCards(videos, { append = false } = {}) {
   clearMessage();
   if (!append) { gridEl.innerHTML=""; state.seenIds = new Set(); }
+  if (videos && videos.length) videos = videos.filter(_withinAge);
   if (!append && (!videos || !videos.length)) { showMessage("動画が見つかりませんでした。"); return; }
   if (!videos) return;
   for (const v of videos) {
@@ -1857,11 +1894,7 @@ async function loadTrending(type) {
   setActiveTab(type);
   sectionTitleEl.textContent = type==="gaming"?"ゲーム":type==="music"?"音楽":"急上昇";
   showLoading("動画を取得しています...");
-  if (type === "default") {
-    loadShortsRow("shorts", { mode: "trending" }).catch(()=>{});
-  } else {
-    clearShortsRow();
-  }
+  clearShortsRow();
   try {
     const p = new URLSearchParams({region:"JP"});
     if (type!=="default") p.set("type", type);
@@ -1883,7 +1916,7 @@ async function runSearch(query, { append = false } = {}) {
     state.page=1; state.noMorePages=false; setActiveTab(null);
     sectionTitleEl.textContent = `検索結果: ${query}`;
     showLoading("検索しています...");
-    loadShortsRow(query, { mode: "search" }).catch(()=>{});
+    /* shorts row removed */
   }
   try {
     const p = new URLSearchParams({q:query, type:"all", page:String(state.page)});
@@ -1967,6 +2000,16 @@ function loadSubsView() {
   const ids = Object.keys(subs);
   if (!ids.length) { showMessage("登録中のチャンネルはありません。"); return; }
   gridEl.innerHTML = "";
+  // 新機能: 一括解除ボタン
+  const toolbar = document.createElement("div");
+  toolbar.style.cssText = "grid-column:1/-1;display:flex;justify-content:flex-end;gap:8px;margin-bottom:4px;";
+  toolbar.innerHTML = `<button id="unsubAllBtn" class="action-chip" style="background:var(--accent);color:#fff;">すべての登録を解除</button>`;
+  gridEl.appendChild(toolbar);
+  toolbar.querySelector("#unsubAllBtn").addEventListener("click", () => {
+    if (!confirm("すべての登録チャンネルを解除しますか？")) return;
+    try { localStorage.setItem(SUBS_KEY, "{}"); } catch(_) {}
+    loadSubsView();
+  });
   for (const id of ids) {
     const c = subs[id];
     const el = document.createElement("div");
@@ -1977,8 +2020,18 @@ function loadSubsView() {
       </div>
       <div class="card-title" style="font-size:14px; font-weight:600; margin-bottom:4px; color:var(--text);">${escapeHtml(c.author||"チャンネル")}</div>
       <div class="card-sub" style="font-size:12px; color:var(--text-dim);">登録済み</div>
+      <button class="action-chip sub-unsub-btn" data-cid="${escapeHtml(id)}" style="margin-top:8px;font-size:12px;padding:6px 12px;">登録解除</button>
     `;
-    el.addEventListener("click", () => openChannel(id));
+    el.addEventListener("click", (e) => {
+      if (e.target.closest(".sub-unsub-btn")) return;
+      openChannel(id);
+    });
+    const ub = el.querySelector(".sub-unsub-btn");
+    if (ub) ub.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleSubscribe(id, c);
+      loadSubsView();
+    });
     gridEl.appendChild(el);
   }
 }
@@ -2045,7 +2098,11 @@ function renderPlayerShell(v) {
       <video id="videoEl" controls playsinline${state.settings.autoplay==="on"?" autoplay":""}></video>
       <audio id="audioEl" style="display:none;"></audio>
       <div class="video-skeleton" id="videoSkeleton">
-        <div style="text-align:center;"><div class="spinner"></div>ストリームを取得中...</div>
+        <div style="text-align:left; color:#fff; padding:24px; line-height:1.8; font-size:14px;">
+          <div style="margin-bottom:8px;"><div class="spinner" style="display:inline-block;vertical-align:middle;margin-right:8px;"></div>読み込み中…</div>
+          <div>読み込む速度を早くする方法。↓</div>
+          <div>右上の設定マークからカスタムエンドポイントのを追加してください　＊方法は簡単で1~3分で作れます。</div>
+        </div>
       </div>
     </div>
     <div class="player-title" id="pTitle">${escapeHtml(v.title||"読み込み中…")}</div>
@@ -2127,6 +2184,26 @@ function renderPlayerShell(v) {
       if (cid) { closePlayer(); openChannel(cid); }
     });
   }
+
+  // ===== カスタムコントロール =====
+  (function setupCustomControls(){
+    const v = document.getElementById("videoEl");
+    const cc = document.getElementById("customControls");
+    if (!v || !cc) return;
+    const timeEl = cc.querySelector("#ccTime");
+    const fmt = (s)=>{ if(!isFinite(s))return "0:00"; s=Math.floor(s); const m=Math.floor(s/60), sec=s%60; return m+":"+String(sec).padStart(2,"0"); };
+    v.addEventListener("timeupdate", ()=>{ if(timeEl) timeEl.textContent = fmt(v.currentTime)+" / "+fmt(v.duration); });
+    cc.addEventListener("click", (e)=>{
+      const b = e.target.closest("[data-act]"); if(!b) return;
+      const a = b.dataset.act;
+      if(a==="play"){ v.paused?v.play():v.pause(); }
+      else if(a==="mute"){ v.muted=!v.muted; }
+      else if(a==="fs"){ const el=v.closest(".video-frame"); if(document.fullscreenElement){document.exitFullscreen();} else if(el&&el.requestFullscreen){el.requestFullscreen();} }
+      else if(a==="pip"){ try{ if(document.pictureInPictureElement){document.exitPictureInPicture();} else if(v.requestPictureInPicture){v.requestPictureInPicture();} }catch(_){} }
+      else if(a==="next"){ const r=document.querySelector(".related-item"); if(r) r.click(); }
+      else if(a==="prev"){ try{ history.back(); }catch(_){} }
+    });
+  })();
 
   // 関連動画の初期スケルトン表示
   playerSide.innerHTML = `
@@ -2713,7 +2790,7 @@ async function openChannel(channelId) {
         <div class="channel-tabs">
           <button class="ch-tab active" data-ch-tab="home">ホーム</button>
           <button class="ch-tab" data-ch-tab="videos">動画</button>
-          <button class="ch-tab" data-ch-tab="shorts">ショート</button>
+          
           <button class="ch-tab" data-ch-tab="search">検索</button>
           <button class="ch-tab" data-ch-tab="about">概要</button>
         </div>
